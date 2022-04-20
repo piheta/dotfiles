@@ -7,7 +7,7 @@ function git_branch_name()
   then
     :
   else
-    echo ' ('$branch')'
+    echo '%F{red}('$branch')%F{reset} '
   fi
 }
 
@@ -18,7 +18,7 @@ export TERM=xterm-256color
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 #export PS1="➜ %1~ $(git_branch_name) $ " 
-prompt='➜ %1~%{$fg[red]%}$(git_branch_name) $reset_color%}$ '
+prompt='➜ %1~ $(git_branch_name)$ '
 
 alias ls="gls --color -h --group-directories-first"
 alias vim="nvim"
