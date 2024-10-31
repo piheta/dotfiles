@@ -18,20 +18,14 @@ export TERM=xterm-256color
 export EDITOR=nvim
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-#prompt='➜ %1~ $(git_branch_name)$ '
 prompt='%1~ $(git_branch_name)$ '
 
 alias ls="gls --color -h --group-directories-first"
 alias vim="nvim"
 alias icat="kitty +kitten icat"
-alias ccat="pygmentize -g"
 alias theme="kitty +kitten themes"
 alias ranger="TERM=xterm-kitty ranger"
-alias math="calc"
-alias idea="open -na 'IntelliJ IDEA CE.app' ."
-alias kat="kitty -1 -d=."
 alias pubip="curl icanhazip.com"
-#.... privip     ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v 127.0.0.1 | awk '{ print $2 }',  This only works in a shell script for some reason, moved it to /usr/local/bin/privip
 
 # auto/tab completion
 autoload -U compinit; compinit
