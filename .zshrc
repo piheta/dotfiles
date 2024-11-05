@@ -21,12 +21,24 @@ export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 prompt='%1~ $(git_branch_name)$ '
 
 alias ls="gls --color -h --group-directories-first"
-alias vim="nvim"
 alias icat="kitty +kitten icat"
 alias theme="kitty +kitten themes"
 alias ranger="TERM=xterm-kitty ranger"
 alias pubip="curl icanhazip.com"
 alias k="kubectl"
+
+
+nvim() {
+    # Set Kitty padding to zero when Neovim starts
+    kitty @ set-spacing padding=0
+    
+    # Open Neovim with any arguments passed
+    command nvim "$@"
+    
+    # Restore Kitty padding to default when Neovim exits
+    kitty @ set-spacing padding=default
+}
+alias vim="nvim"
 
 # auto/tab completion
 autoload -U compinit; compinit
