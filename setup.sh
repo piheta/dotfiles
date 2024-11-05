@@ -18,3 +18,6 @@ mkdir -p ~/.config
 [ ! -e ~/.config/lf ] && ln -s "$(pwd)/lf" ~/.config/lf
 [ ! -e ~/.config/skhd ] && ln -s "$(pwd)/skhd" ~/.config/skhd
 #[ ! -e ~/.zshrc ] && ln -s "$(pwd)/.zshrc" ~/.zshrc
+
+
+open /Applications/Rectangle.app/
