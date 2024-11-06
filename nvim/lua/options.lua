@@ -9,7 +9,7 @@ o.tabstop = 4        -- Number of spaces for a tab
 o.shiftwidth = 4     -- Number of spaces for indentation
 o.expandtab = true   -- Use spaces instead of tabs
 
-o.number = true
 o.relativenumber = true
-o.numberwidth = 4
-o.signcolumn = "yes"
+o.statuscolumn = "%s%=%r "
+o.numberwidth = 3
+--o.signcolumn = "yes:1"
