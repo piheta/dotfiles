@@ -1,5 +1,6 @@
 autoload -U colors && colors
 export PATH=$(go env GOPATH)/bin:$PATH
+eval "$(zoxide init --cmd cd zsh)"
 function git_branch_name()
 {
   branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
