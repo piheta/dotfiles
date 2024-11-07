@@ -17,6 +17,10 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
+-- Map Ctrl+U and Ctrl+D to also center the cursor on the screen
+map("n", "<C-u>", "<C-u>zz")
+map("n", "<C-d>", "<C-d>zz")
+
 -- Function to switch to window containing next/prev buffer if it exists,
 -- otherwise switch buffer in a designated "main" window
 local main_window = nil

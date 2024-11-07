@@ -41,6 +41,5 @@ mkdir -p ~/.config
 
 [ ! -e ~/.config/kitty ] && ln -s "$(pwd)/kitty" ~/.config/kitty
 [ ! -e ~/.config/nvim ] && ln -s "$(pwd)/nvim" ~/.config/nvim
-[ ! -e ~/.config/lf ] && ln -s "$(pwd)/lf" ~/.config/lf
 [ ! -e ~/.config/skhd ] && ln -s "$(pwd)/skhd" ~/.config/skhd
-#[ ! -e ~/.zshrc ] && ln -s "$(pwd)/.zshrc" ~/.zshrc
+[ ! -e ~/.zshrc ] && ln -s "$(pwd)/.zshrc" ~/.zshrc
