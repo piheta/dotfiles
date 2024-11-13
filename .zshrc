@@ -28,6 +28,7 @@ tabs -4
 ### ALIASES
 ###
 alias ls="gls --color -h --group-directories-first"
+alias ll="ls -al"
 alias icat="kitty +kitten icat"
 alias theme="kitty +kitten themes"
 alias ranger="TERM=xterm-kitty ranger"
