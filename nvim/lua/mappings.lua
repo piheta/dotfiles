@@ -16,6 +16,7 @@ local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
+map("n", "y", "yy", { desc = "yank line" })
 
 -- Map Ctrl+U and Ctrl+D to also center the cursor on the screen
 map("n", "<C-u>", "<C-u>zz")
