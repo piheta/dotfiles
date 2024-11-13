@@ -83,12 +83,7 @@ alias vim="nvim"
 }
 
 
-
 source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-
-# bun completions
-[ -s "/Users/picheta/.bun/_bun" ] && source "/Users/picheta/.bun/_bun"
-
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
