@@ -34,6 +34,7 @@ alias theme="kitty +kitten themes"
 alias ranger="TERM=xterm-kitty ranger"
 alias pubip="curl icanhazip.com"
 alias k="kubectl"
+alias d="docker"
 
 
 nvim() {
