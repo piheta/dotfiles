@@ -80,4 +80,3 @@ end, { desc = "Switch to next buffer or focus its window" })
 map("n", "<S-tab>", function()
     smart_buffer_switch("prev")
 end, { desc = "Switch to previous buffer or focus its window" })
-
