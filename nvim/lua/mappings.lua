@@ -25,6 +25,7 @@ map("n", "<C-d>", "<C-d>zz")
 -- Function to switch to window containing next/prev buffer if it exists,
 -- otherwise switch buffer in a designated "main" window
 local main_window = nil
+
 local function smart_buffer_switch(direction)
     -- Get list of valid, listed buffers
     local bufs = vim.api.nvim_list_bufs()
@@ -52,24 +53,31 @@ local function smart_buffer_switch(direction)
     else
         target_index = (current_index - 2 + #valid_bufs) % #valid_bufs + 1
     end
+
     local target_buf = valid_bufs[target_index]
 
     -- Check if target buffer is visible in any window
     local windows = vim.api.nvim_list_wins()
     for _, win in ipairs(windows) do
-        if vim.api.nvim_win_get_buf(win) == target_buf then
-            -- If found, switch to that window
+        -- Add a check to ensure the window is valid before using it
+        if vim.api.nvim_win_is_valid(win) and vim.api.nvim_win_get_buf(win) == target_buf then
             vim.api.nvim_set_current_win(win)
             return
         end
     end
 
-    -- If target buffer isn't visible in any other window, switch it in the main window
-    if not main_window then
-        main_window = vim.api.nvim_get_current_win()
+    -- Fallback to creating a new window or using the current window
+    local target_win = vim.api.nvim_get_current_win()
+
+    -- Ensure the target window is valid
+    if not vim.api.nvim_win_is_valid(target_win) then
+        -- If current window is invalid, create a new split
+        vim.cmd('split')
+        target_win = vim.api.nvim_get_current_win()
     end
-    vim.api.nvim_win_set_buf(main_window, target_buf)
-    vim.api.nvim_set_current_win(main_window)
+
+    vim.api.nvim_win_set_buf(target_win, target_buf)
+    vim.api.nvim_set_current_win(target_win)
 end
 
 -- Map tab and shift-tab to smart buffer switching
