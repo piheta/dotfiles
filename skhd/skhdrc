@@ -1,4 +1,6 @@
 # Programs
 
 cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+ctrl - backspace : skhd -k "alt - backspace"
+#ctrl + backspace [Kitty] : skhd -k "ctrl - w"
 
