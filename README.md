@@ -2,7 +2,7 @@
 
 - Changes wallpaper
 - Installs Homebrew
-- Installs Packages in the BrewFile
+- Installs Packages in the Brewfile
 - Sets up symlinks to .config dir
 
 ![Sept UI](./docs/iac.gif)
