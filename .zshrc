@@ -12,6 +12,12 @@ function git_branch_name()
   fi
 }
 
+### HISTORY
+HISTSIZE=100000
+SAVEHIST=100000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+
 ###
 ### SETUP PROMPT
 ###
@@ -35,6 +41,7 @@ alias ranger="TERM=xterm-kitty ranger"
 alias pubip="curl icanhazip.com"
 alias k="kubectl"
 alias d="docker"
+alias tf="terraform"
 
 
 nvim() {
