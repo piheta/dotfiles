@@ -1,13 +1,23 @@
 -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local lspconfig = require("lspconfig")
 local nvlsp = require "nvchad.configs.lspconfig"
 
+
+local configs = require "lspconfig.configs"
+-- Check if it's already defined for when reloading this file.
+configs.up = {
+    default_config = {
+        cmd = { "up", "xpls", "serve", "--verbose" },
+        filetypes = { "yaml" },
+        root_dir = lspconfig.util.root_pattern "crossplane.yaml",
+    },
+}
 
 require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = { "lua_ls", "gopls" },
 })
 
-local lspconfig = require("lspconfig")
 
 require("mason-lspconfig").setup_handlers({
     function(server_name)
@@ -29,12 +39,20 @@ require("mason-lspconfig").setup_handlers({
         })
     end,
 })
+
+require("lspconfig")['up'].setup({
+    cmd = { "up", "xpls", "serve", "--verbose" },
+    filetypes = { "yaml" },
+    root_dir = lspconfig.util.root_pattern "renovate.json",
+})
+
+
 require("lspconfig").yamlls.setup {
     settings = {
         yaml = {
             schemas = {
                 kubernetes = {
-                    "/*.yaml", -- Matches all YAML files
+                    "/k8s-*.yaml", -- Matches all YAML files
                 },
             },
             validate = true,
