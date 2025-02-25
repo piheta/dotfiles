@@ -44,7 +44,7 @@ alias pubip="curl icanhazip.com"
 alias k="kubectl"
 alias d="docker"
 alias tf="terraform"
-
+alias vim="nvim"
 
 nvim() {
     # Set Kitty padding to zero when Neovim starts
@@ -56,9 +56,9 @@ nvim() {
     # Restore Kitty padding to default when Neovim exits
     kitty @ set-spacing padding=default
 }
-alias vim="nvim"
 
-
+old() { [[ "$1" == *.old ]] && mv -- "$1" "${1%.old}" || mv -- "$1" "${1}.old"; }
+bak() { mv -- "$1" "${1%.bak}$(date +.%Y%m%d%H%M%S).bak"; }
 
 
 ###
