@@ -14,6 +14,9 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
+local telescope = require("telescope.builtin")
+map("n", "<leader>td", telescope.diagnostics, { desc = "Open Telescope Diagnostics" })
+
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map("n", "y", "yy", { desc = "yank line" })
