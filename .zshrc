@@ -41,10 +41,11 @@ alias icat="kitty +kitten icat"
 alias theme="kitty +kitten themes"
 alias ranger="TERM=xterm-kitty ranger"
 alias pubip="curl icanhazip.com"
-alias k="kubectl"
+alias k="kubecolor"
 alias d="docker"
 alias tf="terraform"
 alias vim="nvim"
+
 
 nvim() {
     # Set Kitty padding to zero when Neovim starts
@@ -87,11 +88,23 @@ bak() { mv -- "$1" "${1%.bak}$(date +.%Y%m%d%H%M%S).bak"; }
     } &!
     # pretend we called this directly, instead of the lazy loader
     zle expand-or-complete
+
+
+    if command -v kubecolor >/dev/null 2>&1; then
+        # Tell zsh to use kubectl completion for kubecolor
+        compdef kubecolor=kubectl
+        compdef k=kubectl
+    fi
+
+    # Make sure kubectl completion is loaded
+    if [[ $commands[kubectl] ]]; then
+        source <(kubectl completion zsh)
+    fi
   }
   # mark the function as a zle widget
   zle -N lazyload-compinit
   bindkey "^I" lazyload-compinit
 }
 
-
+export PATH="$HOME/.local/bin:$PATH"
 source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
