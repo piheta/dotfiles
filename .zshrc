@@ -39,12 +39,14 @@ alias ls="gls --color -h --group-directories-first"
 alias ll="ls -al"
 alias icat="kitty +kitten icat"
 alias theme="kitty +kitten themes"
-alias ranger="TERM=xterm-kitty ranger"
 alias pubip="curl icanhazip.com"
 alias k="kubecolor"
 alias d="docker"
 alias tf="terraform"
 alias vim="nvim"
+alias fontsize="kitten query-terminal font_size"
+alias smfont="kitty @ set-font-size 11"
+alias llfont="kitty @ set-font-size 13"
 
 
 nvim() {
