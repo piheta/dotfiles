@@ -1,16 +1,41 @@
 autoload -U colors && colors
 export PATH=$(go env GOPATH)/bin:$PATH
 eval "$(zoxide init --cmd cd zsh)"
-function git_branch_name()
-{
-  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
-  if [[ $branch == "" ]];
-  then
-    :
-  else
-    echo '%F{red}('$branch')%F{reset} '
+
+###
+### ASYNC GIT BRANCH
+###
+git_branch=""
+
+function _git_branch_async() {
+  cd -q "$1"
+  git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}'
+}
+
+function _git_branch_callback() {
+  git_branch="$3"
+  zle && zle reset-prompt
+}
+
+function _start_git_async() {
+  async_stop_worker git_worker 2>/dev/null
+  async_start_worker git_worker -n
+  async_register_callback git_worker _git_branch_callback
+  async_job git_worker _git_branch_async "$PWD"
+}
+
+function git_branch_name() {
+  if [[ -n "$git_branch" ]]; then
+    echo "%F{red}($git_branch)%F{reset} "
   fi
 }
+
+# Load async library
+autoload -Uz async && async
+
+# Update git info on precmd
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _start_git_async
 
 ### HISTORY
 HISTSIZE=100000
