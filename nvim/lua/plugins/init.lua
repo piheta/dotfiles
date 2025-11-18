@@ -43,15 +43,19 @@ return {
   },
 
   {
-    "NeogitOrg/neogit",
+    "kdheepak/lazygit.nvim",
     lazy = true,
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- required
-      "nvim-telescope/telescope.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
     },
-    cmd = "Neogit",
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
     keys = {
-      { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
+      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
   },
 }
