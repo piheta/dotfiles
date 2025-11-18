@@ -16,3 +16,6 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "<C-d>", "<C-d>zz")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+
+-- Go error check
+map("n", "<leader>ee", "oif err != nil {<CR>return err<CR>}<ESC>", { desc = "Insert Go error check" })
