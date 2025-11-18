@@ -4,6 +4,11 @@ local map = vim.keymap.set
 
 map("n", "<leader>td", "<cmd>Telescope diagnostics<CR>", { desc = "Open Telescope Diagnostics" })
 
+-- Diagnostics
+map("n", "<leader>te", function()
+  vim.diagnostic.open_float()
+end, { desc = "Show error in floating window" })
+
 -- Default nvchad
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
