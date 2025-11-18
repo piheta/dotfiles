@@ -17,10 +17,8 @@ map("n", "<C-d>", "<C-d>zz")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
--- Go error check
-map("n", "<leader>ee", "oif err != nil {<CR>return err<CR>}<ESC>", { desc = "Insert Go error check" })
-
 -- Go Developement
 map("n", "<leader>gos", ":!swag init<CR>", { desc = "Swag Init" })
 map("n", "<leader>gol", ":!golangci-lint run<CR>", { desc = "Golangci-lint Run" })
 map("n", "<leader>got", ":!go test ./...<CR>", { desc = "Go Test" })
+map("n", "<leader>goe", "oif err != nil {<CR>return err<CR>}<ESC>", { desc = "Insert Go error check" })
