@@ -14,23 +14,56 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
+    branch = "main",
+    lazy = false,
+    build = ":TSUpdate",
+    event = {},
+    cmd = {},
+    opts = {},
+    config = function()
+      pcall(function()
+        dofile(vim.g.base46_cache .. "syntax")
+        dofile(vim.g.base46_cache .. "treesitter")
+      end)
+
+      local parsers = {
         "c",
         "lua",
+        "luadoc",
         "vim",
         "vimdoc",
         "query",
         "markdown",
         "markdown_inline",
+        "printf",
         "go",
         "javascript",
         "svelte",
         "html",
         "css",
         "python",
-      },
-    },
+      }
+
+      require("nvim-treesitter").install(parsers)
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = {
+          "c",
+          "lua",
+          "vim",
+          "markdown",
+          "go",
+          "javascript",
+          "svelte",
+          "html",
+          "css",
+          "python",
+        },
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
+    end,
   },
 
   {
