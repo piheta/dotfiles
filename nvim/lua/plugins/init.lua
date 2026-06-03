@@ -42,6 +42,7 @@ return {
         "html",
         "css",
         "python",
+        "terraform",
       }
 
       require("nvim-treesitter").install(parsers)
@@ -53,6 +54,7 @@ return {
           "vim",
           "markdown",
           "go",
+          "terraform",
           "javascript",
           "svelte",
           "html",

@@ -13,6 +13,11 @@ end, { desc = "Show error in floating window" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
+-- Git blame for current line (gitsigns popup)
+map("n", "<leader>gb", function()
+  require("gitsigns").blame_line { full = true }
+end, { desc = "Git blame current line" })
+
 -- Instant yank
 map("n", "y", "yy", { desc = "yank line" })
 
@@ -26,4 +31,5 @@ map("n", "<C-d>", "<C-d>zz")
 map("n", "<leader>gos", ":!swag init<CR>", { desc = "Swag Init" })
 map("n", "<leader>gol", ":!golangci-lint run<CR>", { desc = "Golangci-lint Run" })
 map("n", "<leader>got", ":!go test ./...<CR>", { desc = "Go Test" })
+map("n", "<leader>gor", ":!go run main.go<CR>", { desc = "Go Run" })
 map("n", "<leader>goe", "oif err != nil {<CR>return err<CR>}<ESC>", { desc = "Insert Go error check" })
